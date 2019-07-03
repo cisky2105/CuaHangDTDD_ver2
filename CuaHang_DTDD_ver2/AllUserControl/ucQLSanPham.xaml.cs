@@ -90,10 +90,11 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                 txtKhuyenMai.Text = spChon_DTO.GiaKM.ToString();
                 cboNhaSanXuat.SelectedValue = spChon_DTO.MaNSX;
                 cboLoaiDT.SelectedValue = spChon_DTO.MaLoaiDT;
-                string path = strPath + spChon_DTO.HinhAnh;
-                Uri imageUri = new Uri(path, UriKind.Relative);
-                BitmapImage imageBitmap = new BitmapImage(imageUri);
-                imgHinhAnh.Source = imageBitmap;                
+                //string path = strPath + spChon_DTO.HinhAnh;
+                //Uri imageUri = new Uri(path, UriKind.Relative);
+                //BitmapImage imageBitmap = new BitmapImage(imageUri);
+                //imgHinhAnh.Source = imageBitmap;                
+                imgHinhAnh.Source = new BitmapImage(new Uri(strPath2 + spChon_DTO.HinhAnh));
             }
             else
             {
@@ -136,13 +137,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
             
         }
 
-        private static String GetDestinationPath(string filename, string foldername)
-        {
-            String appStartPath = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-
-            appStartPath = String.Format(appStartPath + "\\{0}\\" + filename, foldername);
-            return appStartPath;
-        }
+       
         private void ClearGiaoDien()
         {
             txtTenSP.Clear();

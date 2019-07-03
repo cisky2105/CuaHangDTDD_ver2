@@ -79,6 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AllUserControl\ucBanHang.xaml.cs">
+      <DependentUpon>ucBanHang.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AllUserControl\ucTonKho.xaml.cs">
       <DependentUpon>ucTonKho.xaml</DependentUpon>
     </Compile>
@@ -96,19 +99,13 @@
     <Compile Include="frmReportNhapHang.Designer.cs">
       <DependentUpon>frmReportNhapHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="QL_CuaHangDTDDDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QL_CuaHangDTDDDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="QL_CuaHangDTDDDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QL_CuaHangDTDDDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ResetPasswordWindow.xaml.cs">
       <DependentUpon>ResetPasswordWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AllUserControl\ucBanHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AllUserControl\ucKhachHang.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -220,41 +217,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="QL_CuaHangDTDDDataSet.xsc">
-      <DependentUpon>QL_CuaHangDTDDDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QL_CuaHangDTDDDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QL_CuaHangDTDDDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QL_CuaHangDTDDDataSet.xss">
-      <DependentUpon>QL_CuaHangDTDDDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QL_CuaHangDTDDDataSet1.xsc">
-      <DependentUpon>QL_CuaHangDTDDDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="QL_CuaHangDTDDDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QL_CuaHangDTDDDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QL_CuaHangDTDDDataSet1.xss">
-      <DependentUpon>QL_CuaHangDTDDDataSet1.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\DoAnTN\DoAn\DoAnDTDD\BUS\BUS.csproj">
-      <Project>{db0c2730-5021-4a69-9f28-827bd643e11f}</Project>
-      <Name>BUS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\DoAnTN\DoAn\DoAnDTDD\DTO\DTO.csproj">
-      <Project>{9fd1e9ef-6666-4841-8499-083df805a130}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icon\001-browser.png" />
@@ -403,6 +368,16 @@
     <Resource Include="images\SP00006.jpg" />
     <Resource Include="images\SP00007.jpg" />
     <Resource Include="images\SP00008.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{db0c2730-5021-4a69-9f28-827bd643e11f}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{9fd1e9ef-6666-4841-8499-083df805a130}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

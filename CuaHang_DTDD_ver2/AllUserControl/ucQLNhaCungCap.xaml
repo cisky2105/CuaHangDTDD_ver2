@@ -26,7 +26,7 @@
                     <TextBox x:Name="txtTenNCC" materialDesign:HintAssist.Hint="Tên nhà cung cấp:" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="14" FontWeight="Bold"  Width="320" Margin="10, 20, 10, 0"/>
                     <TextBox x:Name="txtSDTNCC" materialDesign:HintAssist.Hint="Số điện thoại:" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="14" FontWeight="Bold" Width="150" Margin="10, 20, 10, 0"/>
                     <TextBox x:Name="txtDiaChiNCC" materialDesign:HintAssist.Hint="Địa chỉ:" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="14" FontWeight="Bold" Width="150" Margin="10, 20, 10, 0"/>
-                    <TextBox x:Name="txtEmailNCC" materialDesign:HintAssist.Hint="Email:" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="14" FontWeight="Bold" Width="320" Margin="10, 20, 10, 0"/>
+                    <TextBox x:Name="txtEmailNCC" materialDesign:HintAssist.Hint="Email:" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="14" FontWeight="Bold" Width="auto" Margin="10, 20, 10, 0"/>
                 </WrapPanel>
             </Grid>
         </Grid>

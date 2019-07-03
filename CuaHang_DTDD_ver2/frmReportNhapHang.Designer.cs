@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.rpvNhapHang = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.QL_CuaHangDTDDDataSet1 = new CuaHang_DTDD_ver2.QL_CuaHangDTDDDataSet1();
+            
             this.HoaDonNhapBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.HoaDonNhapTableAdapter = new CuaHang_DTDD_ver2.QL_CuaHangDTDDDataSet1TableAdapters.HoaDonNhapTableAdapter();
+            
             this.DataSetPhieuNhap = new CuaHang_DTDD_ver2.DataSetPhieuNhap();
             this.PhieuNhapBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PhieuNhapTableAdapter = new CuaHang_DTDD_ver2.DataSetPhieuNhapTableAdapters.PhieuNhapTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.QL_CuaHangDTDDDataSet1)).BeginInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.HoaDonNhapBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetPhieuNhap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhieuNhapBindingSource)).BeginInit();
@@ -56,17 +56,17 @@
             // 
             // QL_CuaHangDTDDDataSet1
             // 
-            this.QL_CuaHangDTDDDataSet1.DataSetName = "QL_CuaHangDTDDDataSet1";
-            this.QL_CuaHangDTDDDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            //this.QL_CuaHangDTDDDataSet1.DataSetName = "QL_CuaHangDTDDDataSet1";
+            //this.QL_CuaHangDTDDDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // HoaDonNhapBindingSource
             // 
             this.HoaDonNhapBindingSource.DataMember = "HoaDonNhap";
-            this.HoaDonNhapBindingSource.DataSource = this.QL_CuaHangDTDDDataSet1;
+            //this.HoaDonNhapBindingSource.DataSource = this.QL_CuaHangDTDDDataSet1;
             // 
             // HoaDonNhapTableAdapter
             // 
-            this.HoaDonNhapTableAdapter.ClearBeforeFill = true;
+            //this.HoaDonNhapTableAdapter.ClearBeforeFill = true;
             // 
             // DataSetPhieuNhap
             // 
@@ -91,7 +91,7 @@
             this.Name = "frmReportNhapHang";
             this.Text = "frmReportNhapHang";
             this.Load += new System.EventHandler(this.frmReportNhapHang_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.QL_CuaHangDTDDDataSet1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.QL_CuaHangDTDDDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HoaDonNhapBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetPhieuNhap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhieuNhapBindingSource)).EndInit();
@@ -102,9 +102,7 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rpvNhapHang;
-        private System.Windows.Forms.BindingSource HoaDonNhapBindingSource;
-        private QL_CuaHangDTDDDataSet1 QL_CuaHangDTDDDataSet1;
-        private QL_CuaHangDTDDDataSet1TableAdapters.HoaDonNhapTableAdapter HoaDonNhapTableAdapter;
+        private System.Windows.Forms.BindingSource HoaDonNhapBindingSource;        
         private System.Windows.Forms.BindingSource PhieuNhapBindingSource;
         private DataSetPhieuNhap DataSetPhieuNhap;
         private DataSetPhieuNhapTableAdapters.PhieuNhapTableAdapter PhieuNhapTableAdapter;

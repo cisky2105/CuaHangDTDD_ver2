@@ -22,7 +22,7 @@ namespace CuaHang_DTDD_ver2
             // TODO: This line of code loads data into the 'DataSetPhieuNhap.PhieuNhap' table. You can move, or remove it, as needed.
             this.PhieuNhapTableAdapter.Fill(this.DataSetPhieuNhap.PhieuNhap, MaHDNhap);
             // TODO: This line of code loads data into the 'QL_CuaHangDTDDDataSet1.HoaDonNhap' table. You can move, or remove it, as needed.
-            this.HoaDonNhapTableAdapter.Fill(this.QL_CuaHangDTDDDataSet1.HoaDonNhap);
+            //this.HoaDonNhapTableAdapter.Fill(this.QL_CuaHangDTDDDataSet1.HoaDonNhap);
 
             this.rpvNhapHang.RefreshReport();
         }
