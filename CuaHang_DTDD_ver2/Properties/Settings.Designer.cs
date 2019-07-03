@@ -33,5 +33,16 @@ namespace CuaHang_DTDD_ver2.Properties {
                 return ((string)(this["QL_CuaHangDTDDConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-T6BE0A0\\SQLEXPRESS;Initial Catalog=QL_CuaHangDTDD;Integrated " +
+            "Security=True")]
+        public string QL_CuaHangDTDDConnectionString1 {
+            get {
+                return ((string)(this["QL_CuaHangDTDDConnectionString1"]));
+            }
+        }
     }
 }

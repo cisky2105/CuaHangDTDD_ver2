@@ -70,9 +70,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -93,11 +95,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetPhieuNhap.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetPhieuXuat.cs">
+      <DependentUpon>DataSetPhieuXuat.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetPhieuXuat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPhieuXuat.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmReportNhapHang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmReportNhapHang.Designer.cs">
       <DependentUpon>frmReportNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmXemBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXemBaoCao.Designer.cs">
+      <DependentUpon>frmXemBaoCao.cs</DependentUpon>
     </Compile>
     <Compile Include="ResetPasswordWindow.xaml.cs">
       <DependentUpon>ResetPasswordWindow.xaml</DependentUpon>
@@ -194,12 +210,27 @@
     <EmbeddedResource Include="frmReportNhapHang.resx">
       <DependentUpon>frmReportNhapHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmXemBaoCao.resx">
+      <DependentUpon>frmXemBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="rptHoaDon.rdlc" />
     <EmbeddedResource Include="rptPhieuNhap.rdlc" />
+    <None Include=".xsc">
+      <DependentUpon>.xsd</DependentUpon>
+    </None>
+    <None Include=".xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Include=".xss">
+      <DependentUpon>.xsd</DependentUpon>
+    </None>
     <None Include="DataSetPhieuNhap.xsc">
       <DependentUpon>DataSetPhieuNhap.xsd</DependentUpon>
     </None>
@@ -211,7 +242,30 @@
     <None Include="DataSetPhieuNhap.xss">
       <DependentUpon>DataSetPhieuNhap.xsd</DependentUpon>
     </None>
+    <None Include="DataSetPhieuXuat.xsc">
+      <DependentUpon>DataSetPhieuXuat.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetPhieuXuat.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPhieuXuat.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetPhieuXuat.xss">
+      <DependentUpon>DataSetPhieuXuat.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DTO.clsChiTietHDNhap_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsChiTietHDXuat_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsHoaDonNhap_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsHoaDonXuat_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsKhachHang_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsLoaiDT_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsNhaCungCap_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsNhanVien_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsNhaSanXuat_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsQuyen_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.clsSanPham_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.Form1.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

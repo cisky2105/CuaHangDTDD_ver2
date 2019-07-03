@@ -13,7 +13,7 @@ namespace DTO
         private string _MaLoaiDT;
         private string _TenSP;
         private long _GiaBan;
-        private int? _GiaKM;
+        private long? _GiaKM;
         private int? _SLTonKho;
         private string _HinhAnh;
         private bool _TrangThai;
@@ -83,7 +83,7 @@ namespace DTO
             }
         }
 
-        public int? GiaKM
+        public long? GiaKM
         {
             get
             {

@@ -12,7 +12,7 @@ namespace DTO
         private string _SDTKH;
         private int _CMNDNV;
         private DateTime _NgayXuat;
-        private int _TongTien;
+        private long _TongTien;
         private bool _TrangThai;
 
         public string MaHDXuat
@@ -67,7 +67,7 @@ namespace DTO
             }
         }
 
-        public int TongTien
+        public long TongTien
         {
             get
             {

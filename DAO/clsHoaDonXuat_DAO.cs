@@ -12,7 +12,7 @@ namespace DAO
     {
         public bool LuuHoaDonXuat(clsHoaDonXuat_DTO hdx_DTO)
         {
-            string strInsert = "Insert Into HoaDonXuat ([MaHDXuat],[SDTKH],[CMNDNV],[NgayXuat],[TongTien],[TrangThai]) Values (@MaHDXuat,@SDTKH,@CMNDNV,@NgayXuat,@TongTien,1); Select cast(Scope_identity() as int);";
+            string strInsert = "Insert Into HoaDonXuat ([MaHDXuat],[SDTKH],[CMNDNV],[NgayXuat],[TongTien],[TrangThai]) Values (@MaHDXuat,@SDTKH,@CMNDNV,@NgayXuat,@TongTien,1)";
             SqlConnection conn = DataProvider.TaoKetNoi();
             SqlParameter[] pars = new SqlParameter[5];
             pars[0] = new SqlParameter("@MaHDXuat", hdx_DTO.MaHDXuat);
@@ -37,7 +37,7 @@ namespace DAO
                 _hdx.SDTKH = sdr["SDTKH"].ToString();
                 _hdx.CMNDNV = int.Parse(sdr["CMNDNV"].ToString());
                 _hdx.NgayXuat = DateTime.Parse(sdr["NgayXuat"].ToString());
-                _hdx.TongTien = int.Parse(sdr["TongTien"].ToString());
+                _hdx.TongTien = long.Parse(sdr["TongTien"].ToString());
                 lsResult.Add(_hdx);
             }
             sdr.Close();

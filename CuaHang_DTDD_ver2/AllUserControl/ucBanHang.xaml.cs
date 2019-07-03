@@ -271,7 +271,6 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                     }
                     _hoaDon.MaHDXuat = _hdBUS.LayMaTiepTheo();
                     _hoaDon.SDTKH = txtSDTKH.Text;
-                    //_hoaDon.CMNDNV = 123456;// chua code dang nhap nhé!!!!
                     _hoaDon.CMNDNV = int.Parse(cboNhanVien.SelectedValue.ToString());
                     _hoaDon.TongTien = _lsChiTiet.Sum(o => o.ThanhTien);
                     _hoaDon.NgayXuat = DateTime.Now;
@@ -317,9 +316,9 @@ namespace CuaHang_DTDD_ver2.AllUserControl
         {
             if (_hoaDon != null)
             {
-                //frmXemBaoCao frm = new frmXemBaoCao();
-                //frm.InHoaDonXuat(_hoaDon, _lsChiTiet);
-                //frm.ShowDialog();
+                frmXemBaoCao frm = new frmXemBaoCao();
+                frm.MaHDXuat = _hoaDon.MaHDXuat;
+                frm.ShowDialog();
                 _lsChiTiet = new List<clsChiTietHDXuat_DTO>();
                 dgvChiTietHoaDon.ItemsSource = _lsChiTiet;
                 txtTimTenSP.Clear();

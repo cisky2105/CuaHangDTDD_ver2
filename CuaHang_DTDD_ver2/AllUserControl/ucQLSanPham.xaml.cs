@@ -246,20 +246,12 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                             if (imgHinhAnh.Source != null)
                             {
                                 string destinationPath = strPath + spChon_DTO.HinhAnh;
-                                try
+                                if (File.Exists(destinationPath))
                                 {
-                                    if (File.Exists(destinationPath))
-                                    {
-                                        imgHinhAnh.Source = null;
-                                        File.Delete(destinationPath);
-                                    }
-                                    File.Copy(filepath, destinationPath, true);
-
+                                    imgHinhAnh.Source = null;
+                                    File.Delete(destinationPath);
                                 }
-                                catch (Exception ex)
-                                {
-
-                                }
+                                File.Copy(filepath, destinationPath, true);
                             }
                             MessageBox.Show("Sửa sản phẩm thành công!");
                             Grid_Loaded(sender, e);

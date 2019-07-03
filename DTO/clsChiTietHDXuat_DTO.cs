@@ -10,9 +10,9 @@ namespace DTO
     {
         private string _MaHDXuat;
         private string _MaSP;
-        private int _SoLuong;
-        private int _DonGia;
-        private int _GiaKM;
+        private long _SoLuong;
+        private long _DonGia;
+        private long _GiaKM;
 
 
 
@@ -43,7 +43,7 @@ namespace DTO
             }
         }
 
-        public int SoLuong
+        public long SoLuong
         {
             get
             {
@@ -56,7 +56,7 @@ namespace DTO
             }
         }
 
-        public int DonGia
+        public long DonGia
         {
             get
             {
@@ -69,7 +69,7 @@ namespace DTO
             }
         }
 
-        public int GiaKM
+        public long GiaKM
         {
             get
             {
@@ -81,12 +81,13 @@ namespace DTO
                 _GiaKM = value;
             }
         }
-        public int ThanhTien
+        public long ThanhTien
         {
             get
             {
                 return ((SoLuong * DonGia) - (SoLuong * GiaKM));
             }
+            set { }
         }
         
         public string TenSP
