@@ -40,3 +40,18 @@ C:\Users\HOANG KHANG\Desktop\CuaHang_DTDD_ver2\CuaHang_DTDD_ver2\BUS\obj\Debug\B
 C:\Users\HOANG KHANG\Desktop\CuaHang_DTDD_ver2\CuaHang_DTDD_ver2\BUS\obj\Debug\BUS.csproj.GenerateResource.Cache
 C:\Users\HOANG KHANG\Desktop\CuaHang_DTDD_ver2\CuaHang_DTDD_ver2\BUS\obj\Debug\BUS.exe
 C:\Users\HOANG KHANG\Desktop\CuaHang_DTDD_ver2\CuaHang_DTDD_ver2\BUS\obj\Debug\BUS.pdb
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\BUS.exe.config
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\BUS.exe
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\BUS.pdb
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\DAO.exe
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\DTO.exe
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\DAO.pdb
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\bin\Debug\DTO.pdb
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\obj\Debug\BUS.Properties.Resources.resources
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\obj\Debug\BUS.csproj.GenerateResource.Cache
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\obj\Debug\BUS.exe
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\BUS\obj\Debug\BUS.pdb

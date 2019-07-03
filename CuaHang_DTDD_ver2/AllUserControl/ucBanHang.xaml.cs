@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BUS;
+using DTO;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +15,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BUS;
-using DTO;
-using System.IO;
 
 namespace CuaHang_DTDD_ver2.AllUserControl
 {
@@ -23,17 +23,16 @@ namespace CuaHang_DTDD_ver2.AllUserControl
     /// </summary>
     public partial class ucBanHang : UserControl
     {
-        private clsNhanVien_DTO _nvdnto;
-        public clsNhanVien_DTO Nvdnto
-        {
-            get { return _nvdnto; }
-            set { _nvdnto = value; }
-        }
         public ucBanHang()
         {
             InitializeComponent();
         }
-
+        private clsNhanVien_DTO _nvdto;
+        public clsNhanVien_DTO Nvdnto
+        {
+            get { return _nvdto; }
+            set { _nvdto = value; }
+        }
         List<clsSanPham_DTO> _lsSanPham = new List<clsSanPham_DTO>();
         List<clsKhachHang_DTO> _lsKhachHang = new List<clsKhachHang_DTO>();
         clsKhachHang_BUS _khBUS = new clsKhachHang_BUS();
@@ -43,7 +42,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
         clsHoaDonXuat_DTO _hoaDon = null;
         clsHoaDonXuat_BUS _hdBUS = new clsHoaDonXuat_BUS();
         clsChiTietHDXuat_BUS _cthdBUS = new clsChiTietHDXuat_BUS();
-        string strPath = @"C:\Users\HOANG KHANG\Desktop\DoAn_vs_Wpf\CuaHang_DTDD_ver2\CuaHang_DTDD_ver2\CuaHang_DTDD_ver2\bin\Debug\images\";
+        string strPath = @"C:\Users\namop\Desktop\QLCHDTDD\CuaHang_DTDD_ver2\bin\Debug\images\";
         List<clsNhaSanXuat_DTO> _lsNhaSanXuat = new List<clsNhaSanXuat_DTO>();
         List<clsLoaiDT_DTO> _lsLoaiDT = new List<clsLoaiDT_DTO>();
         clsNhaSanXuat_BUS _nsx_BUS = new clsNhaSanXuat_BUS();
@@ -51,8 +50,33 @@ namespace CuaHang_DTDD_ver2.AllUserControl
         List<clsNhanVien_DTO> _lsNhanVien = new List<clsNhanVien_DTO>();
         clsNhanVien_BUS _nv_BUS = new clsNhanVien_BUS();
 
+        private void txtTimTenSP_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            lvwSanPham.Items.Clear();
+            _lsSanPham = _sp_BUS.DanhSachSanPhamTheoTen(txtTimTenSP.Text);
+            foreach (var item in _lsSanPham)
+            {
+                lvwSanPham.Items.Add(item);
+            }
+        }
+
+
+        private void lvwSanPham_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvwSanPham.SelectedItems.Count > 0)
+            {
+                _spChon = (clsSanPham_DTO)lvwSanPham.SelectedItems[0];
+            }
+            else
+                _spChon = null;
+            BindingChiTiet();
+        }
+
         private void StackPanel_Loaded(object sender, RoutedEventArgs e)
         {
+            //imgSanPham.ColorDepth = ColorDepth.Depth32Bit;
+            //imgSanPham.ImageSize = new System.Drawing.Size(60, 60);
+            //lvwSanPham.LargeImageList = imgSanPham;
             btnTruSLM.IsEnabled = false;
             btnXoaSLM.IsEnabled = false;
             txtMaHDXuat.Text = _hdBUS.LayMaTiepTheo();
@@ -70,16 +94,6 @@ namespace CuaHang_DTDD_ver2.AllUserControl
             LoadDanhSachNhanVien();
             LoadDanhSachNhaSanXuat();
             LoadDanhSachLoaiDienThoai();
-        }
-
-        private void txtTimTenSP_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            lvwSanPham.Items.Clear();
-            _lsSanPham = _sp_BUS.DanhSachSanPhamTheoTen(txtTimTenSP.Text);
-            foreach (var item in _lsSanPham)
-            {
-                lvwSanPham.Items.Add(item);
-            }
         }
 
         private void LoadDanhSachLoaiDienThoai()
@@ -142,6 +156,16 @@ namespace CuaHang_DTDD_ver2.AllUserControl
             cboLoaiDT.ItemsSource = _lsLoaiDT;
         }
 
+        private void btnTimSanPham_Click(object sender, RoutedEventArgs e)
+        {
+            _spChon = _lsSanPham.Find(o => o.MaSP == txtMaSP.Text);
+            if (_spChon == null)
+            {
+                MessageBox.Show("Không tồn tại SP");
+            }
+            BindingChiTiet();
+        }
+
         private void btnTruSLM_Click(object sender, RoutedEventArgs e)
         {
             if (_spChon != null)
@@ -151,7 +175,8 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                 if (_cthd != null) //Đã tồn tại
                 {
                     _cthd.SoLuong -= int.Parse(txtSLM.Text);
-                    if (_cthd.SoLuong == 0)
+                    txtSLM.Text = "1";
+                    if (_cthd.SoLuong <= 0)
                     {
                         MessageBox.Show("Số Lượng Sản Phẩm Đã Được Xóa Hết!!! :((");
                         _cthd.SoLuong = 0;
@@ -185,6 +210,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                     _cthd.MaSP = _spChon.MaSP;
                     _cthd.SoLuong = int.Parse(txtSLM.Text);
                     txtSLM.Text = "1";
+                    _cthd.TenSP = _spChon.TenSP;
                     _cthd.DonGia = (int)_spChon.GiaBan;
                     _cthd.GiaKM = (int)_spChon.GiaKM;
                     _lsChiTiet.Add(_cthd);
@@ -245,8 +271,8 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                     }
                     _hoaDon.MaHDXuat = _hdBUS.LayMaTiepTheo();
                     _hoaDon.SDTKH = txtSDTKH.Text;
-                    _hoaDon.CMNDNV = 123456;// chua code dang nhap nhé!!!!
-                    //_hoaDon.CMNDNV = int.Parse(cboNhanVien.SelectedValue.ToString());
+                    //_hoaDon.CMNDNV = 123456;// chua code dang nhap nhé!!!!
+                    _hoaDon.CMNDNV = int.Parse(cboNhanVien.SelectedValue.ToString());
                     _hoaDon.TongTien = _lsChiTiet.Sum(o => o.ThanhTien);
                     _hoaDon.NgayXuat = DateTime.Now;
                     try
@@ -284,6 +310,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
             {
                 MessageBox.Show("Bạn chưa nhập số điện thoại khách hàng !!!");
             }
+
         }
 
         private void btnTinhTien_Click(object sender, RoutedEventArgs e)
@@ -305,7 +332,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                 cboNSX.SelectedValue = -1;
                 cboLoaiDT.SelectedValue = -1;
                 txtSDTKH.Clear();
-                //imgHinhAnh.Image = null;
+                imgHinhAnh.Source = null;
                 lvwSanPham.Items.Clear();
                 StackPanel_Loaded(sender, e);
             }
@@ -320,27 +347,6 @@ namespace CuaHang_DTDD_ver2.AllUserControl
             MessageBox.Show("Đã Reset Hóa Đơn Thành Công !!!");
             btnTruSLM.IsEnabled = false;
             btnXoaSLM.IsEnabled = false;
-        }
-
-        private void lvwSanPham_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (lvwSanPham.SelectedItems.Count > 0)
-            {
-                _spChon = (clsSanPham_DTO)lvwSanPham.SelectedItems[0];
-            }
-            else
-                _spChon = null;
-            BindingChiTiet();
-        }
-
-        private void btnTimSanPham_Click(object sender, RoutedEventArgs e)
-        {
-            _spChon = _lsSanPham.Find(o => o.MaSP == txtMaSP.Text);
-            if (_spChon == null)
-            {
-                MessageBox.Show("Không tồn tại SP");
-            }
-            BindingChiTiet();
         }
     }
 }

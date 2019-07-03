@@ -88,5 +88,10 @@ namespace DTO
                 return ((SoLuong * DonGia) - (SoLuong * GiaKM));
             }
         }
+        
+        public string TenSP
+        {
+            get; set;
+        }
     }
 }
