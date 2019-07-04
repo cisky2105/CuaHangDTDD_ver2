@@ -95,9 +95,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetPhieuNhap.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSetPhieuXuat.cs">
-      <DependentUpon>DataSetPhieuXuat.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DataSetPhieuXuat.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

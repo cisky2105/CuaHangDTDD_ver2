@@ -237,6 +237,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                 }
             }
         }
+        frmXemBaoCao f = new frmXemBaoCao();
 
         private void btnLuuPhieu_Click(object sender, RoutedEventArgs e)
         {
@@ -281,7 +282,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                             foreach (clsChiTietHDXuat_DTO _cthd in _lsChiTiet)
                             {
                                 _cthd.MaHDXuat = _hoaDon.MaHDXuat;
-
+                                f.MaHDXuat = _cthd.MaHDXuat;
                                 _cthdBUS.LuuChiTietHoaDon(_cthd);
                             }
                             MessageBox.Show("Lưu Hóa Đơn Thành công");
@@ -316,9 +317,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
         {
             if (_hoaDon != null)
             {
-                frmXemBaoCao frm = new frmXemBaoCao();
-                frm.MaHDXuat = _hoaDon.MaHDXuat;
-                frm.ShowDialog();
+                f.ShowDialog();
                 _lsChiTiet = new List<clsChiTietHDXuat_DTO>();
                 dgvChiTietHoaDon.ItemsSource = _lsChiTiet;
                 txtTimTenSP.Clear();

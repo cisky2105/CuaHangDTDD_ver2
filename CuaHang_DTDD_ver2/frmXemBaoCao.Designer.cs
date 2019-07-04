@@ -30,13 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.rpvXemBaoCao = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DataSetPhieuXuat = new CuaHang_DTDD_ver2.DataSetPhieuXuat();
             this.PhieuXuatBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DataSetPhieuXuat = new CuaHang_DTDD_ver2.DataSetPhieuXuat();
+            this.rpvXemBaoCao = new Microsoft.Reporting.WinForms.ReportViewer();
             this.PhieuXuatTableAdapter = new CuaHang_DTDD_ver2.DataSetPhieuXuatTableAdapters.PhieuXuatTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSetPhieuXuat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhieuXuatBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSetPhieuXuat)).BeginInit();
             this.SuspendLayout();
+            // 
+            // PhieuXuatBindingSource
+            // 
+            this.PhieuXuatBindingSource.DataMember = "PhieuXuat";
+            this.PhieuXuatBindingSource.DataSource = this.DataSetPhieuXuat;
+            // 
+            // DataSetPhieuXuat
+            // 
+            this.DataSetPhieuXuat.DataSetName = "DataSetPhieuXuat";
+            this.DataSetPhieuXuat.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // rpvXemBaoCao
             // 
@@ -49,16 +59,6 @@
             this.rpvXemBaoCao.Name = "rpvXemBaoCao";
             this.rpvXemBaoCao.Size = new System.Drawing.Size(704, 524);
             this.rpvXemBaoCao.TabIndex = 0;
-            // 
-            // DataSetPhieuXuat
-            // 
-            this.DataSetPhieuXuat.DataSetName = "DataSetPhieuXuat";
-            this.DataSetPhieuXuat.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // PhieuXuatBindingSource
-            // 
-            this.PhieuXuatBindingSource.DataMember = "PhieuXuat";
-            this.PhieuXuatBindingSource.DataSource = this.DataSetPhieuXuat;
             // 
             // PhieuXuatTableAdapter
             // 
@@ -73,8 +73,8 @@
             this.Name = "frmXemBaoCao";
             this.Text = "frmXemBaoCao";
             this.Load += new System.EventHandler(this.frmXemBaoCao_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataSetPhieuXuat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhieuXuatBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSetPhieuXuat)).EndInit();
             this.ResumeLayout(false);
 
         }

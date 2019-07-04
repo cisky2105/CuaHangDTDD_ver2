@@ -200,7 +200,7 @@
         <Top>1.92919in</Top>
         <Left>4.26043in</Left>
         <Height>0.25in</Height>
-        <Width>1.49167in</Width>
+        <Width>2.2in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -249,7 +249,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!CMNDNV.Value</Value>
+                <Value>=Fields!HoVaTen.Value</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -260,7 +260,7 @@
         <Top>2.35626in</Top>
         <Left>4.2521in</Left>
         <Height>0.25833in</Height>
-        <Width>1.5in</Width>
+        <Width>2.20833in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -318,9 +318,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
         <Top>2.7646in</Top>
-        <Left>4.26252in</Left>
+        <Left>4.26043in</Left>
         <Height>0.275in</Height>
-        <Width>1.49167in</Width>
+        <Width>1.49062in</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -378,9 +378,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>3.25209in</Top>
-        <Left>4.2521in</Left>
+        <Left>4.26043in</Left>
         <Height>0.25in</Height>
-        <Width>1.5in</Width>
+        <Width>1.60521in</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -780,7 +780,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ThanhTien.Value</Value>
+                              <Value>=(Fields!SoLuong.Value * Fields!DonGia.Value) - (Fields!GiaKM.Value*Fields!SoLuong.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -801,79 +801,6 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox23">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Tổng Thanh Toán</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox23</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                    <ColSpan>4</ColSpan>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell />
-                <TablixCell />
-                <TablixCell />
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="TongTien">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Sum(Fields!ThanhTien.Value)</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>TongTien</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                    <ColSpan>2</ColSpan>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell />
               </TablixCells>
             </TablixRow>
           </TablixRows>
@@ -897,7 +824,6 @@
               <Group Name="Details" />
               <TablixMembers>
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixMember>
           </TablixMembers>
@@ -905,7 +831,7 @@
         <DataSetName>dsChiTiet</DataSetName>
         <Top>3.73833in</Top>
         <Left>0.53543in</Left>
-        <Height>0.75in</Height>
+        <Height>0.5in</Height>
         <Width>8.25834in</Width>
         <ZIndex>11</ZIndex>
         <Style>
@@ -914,8 +840,68 @@
           </Border>
         </Style>
       </Tablix>
+      <Textbox Name="Textbox16">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Tổng Thanh Toán:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox14</rd:DefaultName>
+        <Top>4.30777in</Top>
+        <Left>4.96981in</Left>
+        <Height>0.25in</Height>
+        <Width>1.16667in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!TongTien.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>4.31818in</Top>
+        <Left>6.46044in</Left>
+        <Height>0.25in</Height>
+        <Width>2.33333in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>5.13542in</Height>
+    <Height>5.03125in</Height>
     <Style />
   </Body>
   <Width>8.9969in</Width>
@@ -943,6 +929,30 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
+        <Field Name="TenNSX">
+          <DataField>TenNSX</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MaSP">
+          <DataField>MaSP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GiaBan">
+          <DataField>GiaBan</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="GiaKM">
+          <DataField>GiaKM</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="TenSP">
+          <DataField>TenSP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HoVaTen">
+          <DataField>HoVaTen</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="SoLuong">
           <DataField>SoLuong</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
@@ -951,33 +961,21 @@
           <DataField>DonGia</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
-        <Field Name="GiaKM">
-          <DataField>GiaKM</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="CMNDNV">
-          <DataField>CMNDNV</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="NgayXuat">
-          <DataField>NgayXuat</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+        <Field Name="MaHDXuat">
+          <DataField>MaHDXuat</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="SDTKH">
           <DataField>SDTKH</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="MaHDXuat">
-          <DataField>MaHDXuat</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TenSP">
-          <DataField>TenSP</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ThanhTien">
-          <DataField>ThanhTien</DataField>
+        <Field Name="TongTien">
+          <DataField>TongTien</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="NgayXuat">
+          <DataField>NgayXuat</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
