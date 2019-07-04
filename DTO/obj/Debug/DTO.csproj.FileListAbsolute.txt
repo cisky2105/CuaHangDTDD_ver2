@@ -36,6 +36,7 @@ C:\Users\namop\Desktop\CuaHangDTDD_ver2\DTO\bin\Debug\DTO.pdb
 C:\Users\namop\Desktop\CuaHangDTDD_ver2\DTO\bin\Debug\Microsoft.ReportViewer.Common.dll
 C:\Users\namop\Desktop\CuaHangDTDD_ver2\DTO\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.DLL
 C:\Users\namop\Desktop\CuaHangDTDD_ver2\DTO\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\Users\namop\Desktop\CuaHangDTDD_ver2\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
 C:\Users\namop\Desktop\CuaHangDTDD_ver2\DTO\obj\Debug\DTO.Form1.resources
 C:\Users\namop\Desktop\CuaHangDTDD_ver2\DTO\obj\Debug\DTO.Properties.Resources.resources
 C:\Users\namop\Desktop\CuaHangDTDD_ver2\DTO\obj\Debug\DTO.csproj.GenerateResource.Cache

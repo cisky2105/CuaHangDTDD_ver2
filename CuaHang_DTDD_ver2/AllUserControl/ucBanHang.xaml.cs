@@ -42,7 +42,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
         clsHoaDonXuat_DTO _hoaDon = null;
         clsHoaDonXuat_BUS _hdBUS = new clsHoaDonXuat_BUS();
         clsChiTietHDXuat_BUS _cthdBUS = new clsChiTietHDXuat_BUS();
-        string strPath = @"C:\Users\namop\Desktop\QLCHDTDD\CuaHang_DTDD_ver2\bin\Debug\images\";
+        string strPath = @"C:\Users\namop\Desktop\QLCHDTDD_ver2\CuaHang_DTDD_ver2\bin\Debug\images\";
         List<clsNhaSanXuat_DTO> _lsNhaSanXuat = new List<clsNhaSanXuat_DTO>();
         List<clsLoaiDT_DTO> _lsLoaiDT = new List<clsLoaiDT_DTO>();
         clsNhaSanXuat_BUS _nsx_BUS = new clsNhaSanXuat_BUS();
@@ -199,10 +199,22 @@ namespace CuaHang_DTDD_ver2.AllUserControl
             {
                 //Tìm xem sp đã được thêm chưa
                 clsChiTietHDXuat_DTO _cthd = _lsChiTiet.Find(o => o.MaSP == _spChon.MaSP);
+                int _slTon = int.Parse(_spChon.SLTonKho.ToString());
+                int _slMua = int.Parse(txtSLM.Text);
                 if (_cthd != null) //Đã tồn tại
                 {
-                    _cthd.SoLuong += int.Parse(txtSLM.Text);
-                    txtSLM.Text = "1";
+                    if (_slMua <= _slTon)
+                    {
+                        _cthd.SoLuong += int.Parse(txtSLM.Text);
+                        txtSLM.Text = "1";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Số Sản Phẩm Mua Vượt Quá Số Sản Phẩm Của Cửa Hàng !!!  Vui Lòng Nhập lại :))");
+                        txtSLM.Text = "1";
+                        btnTruSLM.IsEnabled = false;
+                        btnXoaSLM.IsEnabled = false;
+                    }
                 }
                 else
                 {
@@ -214,6 +226,13 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                     _cthd.DonGia = (int)_spChon.GiaBan;
                     _cthd.GiaKM = (int)_spChon.GiaKM;
                     _lsChiTiet.Add(_cthd);
+                }
+                if (_cthd.SoLuong > _slTon)
+                {
+                    MessageBox.Show("Số Sản Phẩm Cửa Hàng Chỉ Còn Lại :" + _spChon.SLTonKho.ToString() + " Sản Phẩm");
+                    txtSLM.Text = "1";
+                    _cthd.SoLuong = _slTon;
+                    //_lsChiTiet.Remove(_cthd);
                 }
                 txtTongTien.Text = _lsChiTiet.Sum(o => o.ThanhTien).ToString();
                 dgvChiTietHoaDon.ItemsSource = null;

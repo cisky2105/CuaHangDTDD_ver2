@@ -38,8 +38,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
         clsSanPham_DTO spChon_DTO = null;
         int tam = 0; // 0 la them, 1 la sua
         string strPath = @"/images/";
-        string strPath2 = @"C:\Users\HOANG KHANG\Desktop\DoAn_vs_Wpf\CuaHang_DTDD_ver2\CuaHang_DTDD_ver2\CuaHang_DTDD_ver2\images\";
-
+        string strPath2 = @"C:\Users\namop\Desktop\QLCHDTDD_ver2\CuaHang_DTDD_ver2\bin\Debug\images\";
         List<clsSanPham_DTO> lsSanPham = new List<clsSanPham_DTO>();
         List<clsNhaSanXuat_DTO> lsNhaSanXuat = new List<clsNhaSanXuat_DTO>();
         List<clsLoaiDT_DTO> lsLoaiDT = new List<clsLoaiDT_DTO>();
