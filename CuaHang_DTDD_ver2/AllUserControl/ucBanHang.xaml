@@ -26,10 +26,10 @@
                         </ScrollViewer>
                     </Grid>
                     <ComboBox x:Name="cboNhanVien" materialDesign:HintAssist.Hint="Nhân Viên Bán Hàng" DisplayMemberPath="HoVaTen" SelectedValuePath="CMNDNV"  Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="24"  />
-                    <TextBox x:Name="txtSDTKH" materialDesign:HintAssist.Hint="Số Điện Thoại Khách Hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="24" />
+                    <TextBox x:Name="txtSDTKH" materialDesign:HintAssist.Hint="Số Điện Thoại Khách Hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="24" KeyDown="txtSDTKH_KeyDown" />
                     <Grid Height="327">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <ListView x:Name="dgvChiTietHoaDon" HorizontalAlignment="Center"  FontSize="13" Width="500" Height="327">
+                            <ListView x:Name="dgvChiTietHoaDon" HorizontalAlignment="Center"  FontSize="13" Width="500" Height="327" >
                                 <ListView.View>
                                     <GridView >
                                         <GridViewColumn x:Name="colMaSP" Header="Mã SP" Width="75"  DisplayMemberBinding="{Binding MaSP}"></GridViewColumn>
@@ -62,7 +62,7 @@
                     <TextBox x:Name="txtGiaKM" materialDesign:HintAssist.Hint="Giá Khuyến mãi" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="24"  />
                     <DockPanel VerticalAlignment="Stretch" LastChildFill="False">
                         <Button x:Name="btnTruSLM" Content="-" Width="50" Margin="30,0,31,0" FontSize="24" Height="50" Click="btnTruSLM_Click"></Button>
-                        <TextBox x:Name="txtSLM" materialDesign:HintAssist.Hint="Số Lượng Mua" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="160" FontSize="24" Text="1"  />
+                        <TextBox x:Name="txtSLM" materialDesign:HintAssist.Hint="Số Lượng Mua" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="160" FontSize="24" Text="1" KeyDown="txtSLM_KeyDown"   />
                         <Button x:Name="btnCongSLM" Content="+" Width="50" Margin="30,0,31,0" Height="50" FontSize="24" Click="btnCongSLM_Click"></Button>
                         <Button x:Name="btnXoaSLM" Content="X" Width="50" Margin="32,0,30,0" Height="50" FontSize="24" Click="btnXoaSLM_Click"></Button>
                         <Button></Button>

@@ -42,7 +42,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
         clsHoaDonXuat_DTO _hoaDon = null;
         clsHoaDonXuat_BUS _hdBUS = new clsHoaDonXuat_BUS();
         clsChiTietHDXuat_BUS _cthdBUS = new clsChiTietHDXuat_BUS();
-        string strPath = @"C:\Users\namop\Desktop\QLCHDTDD_ver2\CuaHang_DTDD_ver2\bin\Debug\images\";
+        string strPath = @"C:\Users\namop\Desktop\QLCHDTDD\CuaHang_DTDD_ver2\bin\Debug\images\";
         List<clsNhaSanXuat_DTO> _lsNhaSanXuat = new List<clsNhaSanXuat_DTO>();
         List<clsLoaiDT_DTO> _lsLoaiDT = new List<clsLoaiDT_DTO>();
         clsNhaSanXuat_BUS _nsx_BUS = new clsNhaSanXuat_BUS();
@@ -74,9 +74,6 @@ namespace CuaHang_DTDD_ver2.AllUserControl
 
         private void StackPanel_Loaded(object sender, RoutedEventArgs e)
         {
-            //imgSanPham.ColorDepth = ColorDepth.Depth32Bit;
-            //imgSanPham.ImageSize = new System.Drawing.Size(60, 60);
-            //lvwSanPham.LargeImageList = imgSanPham;
             btnTruSLM.IsEnabled = false;
             btnXoaSLM.IsEnabled = false;
             txtMaHDXuat.Text = _hdBUS.LayMaTiepTheo();
@@ -90,6 +87,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
             cboNSX.IsEnabled = false;
             txtTongTien.IsEnabled = false;
             btnTinhTien.IsEnabled = false;
+            btnResetPhieu.IsEnabled = false;
             LoadDanhSachDienThoai();
             LoadDanhSachNhanVien();
             LoadDanhSachNhaSanXuat();
@@ -161,7 +159,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
             _spChon = _lsSanPham.Find(o => o.MaSP == txtMaSP.Text);
             if (_spChon == null)
             {
-                MessageBox.Show("Không tồn tại SP");
+                MessageBox.Show("Không Tồn Tại SP .");
             }
             BindingChiTiet();
         }
@@ -174,16 +172,27 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                 clsChiTietHDXuat_DTO _cthd = (clsChiTietHDXuat_DTO)dgvChiTietHoaDon.SelectedItem;
                 if (_cthd != null) //Đã tồn tại
                 {
-                    _cthd.SoLuong -= int.Parse(txtSLM.Text);
-                    txtSLM.Text = "1";
-                    if (_cthd.SoLuong <= 0)
+                    int _slGiamLD = int.Parse(txtSLM.Text);
+                    if (_slGiamLD > 0)
                     {
-                        MessageBox.Show("Số Lượng Sản Phẩm Đã Được Xóa Hết!!! :((");
-                        _cthd.SoLuong = 0;
-                        _lsChiTiet.Remove(_cthd);
-                        btnTruSLM.IsEnabled = false;
-                        btnXoaSLM.IsEnabled = false;
+                        _cthd.SoLuong -= int.Parse(txtSLM.Text);
+                        txtSLM.Text = "1";
+                        if (_cthd.SoLuong <= 0)
+                        {
+                            MessageBox.Show("Số Lượng Sản Phẩm Đã Được Xóa Hết .");
+                            _lsChiTiet.Remove(_cthd);
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show("Số Lượng Giảm Phải Lớn Hơn Số 0 .");
+                        txtSLM.Text = "1";
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Chưa Chọn Sản Phẩm Trong Danh Sách Để GIẢM Số Lượng .");
                 }
                 txtTongTien.Text = _lsChiTiet.Sum(o => o.ThanhTien).ToString();
                 dgvChiTietHoaDon.ItemsSource = null;
@@ -193,66 +202,87 @@ namespace CuaHang_DTDD_ver2.AllUserControl
 
         private void btnCongSLM_Click(object sender, RoutedEventArgs e)
         {
-            btnTruSLM.IsEnabled = true;
-            btnXoaSLM.IsEnabled = true;
             if (_spChon != null)
             {
+                btnTruSLM.IsEnabled = true;
+                btnXoaSLM.IsEnabled = true;
+                btnResetPhieu.IsEnabled = true;
                 //Tìm xem sp đã được thêm chưa
                 clsChiTietHDXuat_DTO _cthd = _lsChiTiet.Find(o => o.MaSP == _spChon.MaSP);
                 int _slTon = int.Parse(_spChon.SLTonKho.ToString());
-                int _slMua = int.Parse(txtSLM.Text);
+                int _slMuaLD = int.Parse(txtSLM.Text);
                 if (_cthd != null) //Đã tồn tại
                 {
-                    if (_slMua <= _slTon)
+                    if (_slMuaLD <= _slTon)
                     {
                         _cthd.SoLuong += int.Parse(txtSLM.Text);
                         txtSLM.Text = "1";
+                        if (_cthd.SoLuong > _slTon)
+                        {
+                            MessageBox.Show("Số Sản Phẩm Cửa Hàng Chỉ Còn Lại : " + _spChon.SLTonKho.ToString() + " Sản Phẩm ! Vui Lòng Nhập Lại .");
+                            txtSLM.Text = "1";
+                            _cthd.SoLuong = _slTon;
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Số Sản Phẩm Mua Vượt Quá Số Sản Phẩm Của Cửa Hàng !!!  Vui Lòng Nhập lại :))");
+                        MessageBox.Show("Số Sản Phẩm Mua Vượt Quá Số Sản Phẩm Của Cửa Hàng !  Vui Lòng Nhập Lại .");
                         txtSLM.Text = "1";
-                        btnTruSLM.IsEnabled = false;
-                        btnXoaSLM.IsEnabled = false;
                     }
+
                 }
                 else
                 {
                     _cthd = new clsChiTietHDXuat_DTO();
                     _cthd.MaSP = _spChon.MaSP;
                     _cthd.SoLuong = int.Parse(txtSLM.Text);
-                    txtSLM.Text = "1";
                     _cthd.TenSP = _spChon.TenSP;
                     _cthd.DonGia = (int)_spChon.GiaBan;
                     _cthd.GiaKM = (int)_spChon.GiaKM;
-                    _lsChiTiet.Add(_cthd);
-                }
-                if (_cthd.SoLuong > _slTon)
-                {
-                    MessageBox.Show("Số Sản Phẩm Cửa Hàng Chỉ Còn Lại :" + _spChon.SLTonKho.ToString() + " Sản Phẩm");
-                    txtSLM.Text = "1";
-                    _cthd.SoLuong = _slTon;
-                    //_lsChiTiet.Remove(_cthd);
-                }
+                    if (_cthd.SoLuong > _slTon)
+                    {
+                        MessageBox.Show("Số Sản Phẩm Cửa Hàng Chỉ Còn Lại : " + _spChon.SLTonKho.ToString() + " Sản Phẩm ! Vui Lòng Nhập Lại .");
+                        txtSLM.Text = "1";
+
+                    }
+                    else
+                    {
+                        _lsChiTiet.Add(_cthd);
+                    }
+
+                }   
                 txtTongTien.Text = _lsChiTiet.Sum(o => o.ThanhTien).ToString();
                 dgvChiTietHoaDon.ItemsSource = null;
                 dgvChiTietHoaDon.ItemsSource = _lsChiTiet;
+            }
+            else
+            {
+                btnTruSLM.IsEnabled = false;
+                btnXoaSLM.IsEnabled = false;
+                btnResetPhieu.IsEnabled = false;
             }
         }
 
         private void btnXoaSLM_Click(object sender, RoutedEventArgs e)
         {
-            if (dgvChiTietHoaDon.SelectedItems.Count > 0)
+            if (_spChon != null)
             {
-                clsChiTietHDXuat_DTO _ctchon = (clsChiTietHDXuat_DTO)dgvChiTietHoaDon.SelectedItem;
-                MessageBoxResult mbr = MessageBox.Show("Bạn Có Muốn Xóa Sản Phẩm Khỏi Danh Sách ???", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question); ;
-
-                if (mbr == MessageBoxResult.Yes)
+                if (dgvChiTietHoaDon.SelectedItems.Count > 0)
                 {
-                    _lsChiTiet.Remove(_ctchon);
-                    txtTongTien.Text = _lsChiTiet.Sum(o => o.ThanhTien).ToString();
-                    dgvChiTietHoaDon.ItemsSource = null;
-                    dgvChiTietHoaDon.ItemsSource = _lsChiTiet;
+                    clsChiTietHDXuat_DTO _ctchon = (clsChiTietHDXuat_DTO)dgvChiTietHoaDon.SelectedItem;
+                    MessageBoxResult mbr = MessageBox.Show("Bạn Có Muốn Xóa Sản Phẩm Khỏi Danh Sách ???", "THÔNG BÁO", MessageBoxButton.YesNo, MessageBoxImage.Question); ;
+
+                    if (mbr == MessageBoxResult.Yes)
+                    {
+                        _lsChiTiet.Remove(_ctchon);
+                        txtTongTien.Text = _lsChiTiet.Sum(o => o.ThanhTien).ToString();
+                        dgvChiTietHoaDon.ItemsSource = null;
+                        dgvChiTietHoaDon.ItemsSource = _lsChiTiet;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Chưa Chọn Sản Phẩm Trong Danh Sách Để XÓA .");
                 }
             }
         }
@@ -276,10 +306,10 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                         {
                             clsKhachHang_DTO khdto = new clsKhachHang_DTO();
                             khdto.SDTKH = txtSDTKH.Text;
-                            khdto.TenKH = "no-name";
+                            khdto.TenKH = "NoName";
                             khdto.GioiTinh = false;
-                            khdto.DiaChi = "no-express";
-                            khdto.Email = "no-name@gmail.com";
+                            khdto.DiaChi = "NoExpress";
+                            khdto.Email = "NoName@gmail.com";
 
                             _khBUS.ThemKhachHang(khdto);
                         }
@@ -304,12 +334,12 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                                 f.MaHDXuat = _cthd.MaHDXuat;
                                 _cthdBUS.LuuChiTietHoaDon(_cthd);
                             }
-                            MessageBox.Show("Lưu Hóa Đơn Thành công");
+                            MessageBox.Show("Lưu Hóa Đơn Thành Công .");
                             btnTinhTien.IsEnabled = true;
                         }
                         else
                         {
-                            MessageBox.Show("Tạo Hóa Đơn Không Thành Công");
+                            MessageBox.Show("Tạo Hóa Đơn Không Thành Công .");
                         }
 
                     }
@@ -322,12 +352,12 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                 }
                 else
                 {
-                    MessageBox.Show("Không Có sản Phẩm Nào Để Tạo Hóa Đơn");
+                    MessageBox.Show("Không Có Sản Phẩm Nào Để Tạo Hóa Đơn .");
                 }
             }
             else
             {
-                MessageBox.Show("Bạn chưa nhập số điện thoại khách hàng !!!");
+                MessageBox.Show("Bạn Chưa Nhập Số Điện Thoại Khách Hàng .");
             }
 
         }
@@ -348,7 +378,7 @@ namespace CuaHang_DTDD_ver2.AllUserControl
                 txtTongTien.Clear();
                 cboNSX.SelectedValue = -1;
                 cboLoaiDT.SelectedValue = -1;
-                txtSDTKH.Clear();
+                //txtSDTKH.Clear();
                 imgHinhAnh.Source = null;
                 lvwSanPham.Items.Clear();
                 StackPanel_Loaded(sender, e);
@@ -361,9 +391,72 @@ namespace CuaHang_DTDD_ver2.AllUserControl
             _hoaDon = null;
             txtTongTien.Text = "0";
             dgvChiTietHoaDon.ItemsSource = null;
-            MessageBox.Show("Đã Reset Hóa Đơn Thành Công !!!");
+            MessageBox.Show("Đã Reset Hóa Đơn Thành Công .");
             btnTruSLM.IsEnabled = false;
             btnXoaSLM.IsEnabled = false;
+            btnResetPhieu.IsEnabled = false;
+            _spChon = null;
+            txtTimTenSP.Clear();
+            txtMaSP.Clear();
+            txtTenSP.Clear();
+            txtGiaBan.Clear();
+            txtGiaKM.Clear();
+            txtSLTonKho.Clear();
+            txtTongTien.Clear();
+            cboNSX.SelectedValue = -1;
+            cboLoaiDT.SelectedValue = -1;
+            txtSDTKH.Clear();
+            imgHinhAnh.Source = null;
+            lvwSanPham.Items.Clear();
+            StackPanel_Loaded(sender, e);
         }
+
+        private void txtSLM_KeyDown(object sender, KeyEventArgs e)
+        {
+            bool laSo = true; // code tham khảo
+            if (e.Key < Key.D0 || e.Key > Key.D9)
+            {
+                if (e.Key < Key.NumPad0 || e.Key > Key.NumPad9)
+                {
+                    if (e.Key != Key.Back)
+                    {
+                        laSo = false;
+                    }
+
+                }
+
+            }
+
+            if (!laSo)
+            {
+                MessageBox.Show("Hãy Nhập Số Vào Ô Số Lượng Mua .");
+                e.Handled = true;
+            }
+        }
+
+        private void txtSDTKH_KeyDown(object sender, KeyEventArgs e)
+        {
+            bool laSo = true; // code tham khảo
+            if (e.Key < Key.D0 || e.Key > Key.D9)
+            {
+                if (e.Key < Key.NumPad0 || e.Key > Key.NumPad9)
+                {
+                    if (e.Key != Key.Back)
+                    {
+                        laSo = false;
+                    }
+
+                }
+
+            }
+
+            if (!laSo)
+            {
+                MessageBox.Show("Hãy Nhập Số Điện Thoại Đúng .");
+                e.Handled = true;
+            }
+        }
+
+       
     }
 }
